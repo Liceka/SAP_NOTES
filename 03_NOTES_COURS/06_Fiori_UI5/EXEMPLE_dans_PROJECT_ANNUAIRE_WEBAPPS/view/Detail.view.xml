@@ -1,0 +1,95 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:c="sap.suite.ui.commons"
+	controllerName="stms.app.aelion19.annuaire.controller.Detail">
+	<Page id="PageDetail">
+		<customHeader>
+			<Toolbar>
+				<Button id="backButton" icon="sap-icon://nav-back" press="onNavBack" tooltip="{i18n>button.back}"/>
+				<ToolbarSpacer/>
+				<Title id="title"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</customHeader>
+		<content>
+			<ObjectHeader id="objectHeader" title="{personne>id}" icon="sap-icon://account" backgroundDesign="Translucent">
+				<statuses>
+					<ObjectStatus class="sapMObjectStatusLarge" 
+						inverted="true"
+						visible="{= ${personne>Actif} === false ? true : false }" 
+						text="{i18n>personne.actif.false}"
+						state="Warning"
+						icon="sap-icon://warning2"/>							
+				</statuses>
+			</ObjectHeader>
+		<f:Form id="form" editable="false">
+				<f:layout>
+					<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
+						emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false"/>
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer>
+						<f:formElements>					
+							<f:FormElement label="{i18n>personne.Id}">
+								<f:fields>
+									<Text text="{personne>Id}"/>
+								</f:fields>
+							</f:FormElement>							
+							<f:FormElement label="{i18n>personne.Title}">
+								<f:fields>
+									<Text text="{personne>Title}"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="{i18n>personne.Firstname}">
+								<f:fields>
+									<Text text="{personne>Firstname}"/>
+								</f:fields>
+							</f:FormElement>						
+							<f:FormElement label="{i18n>personne.Lastname}">
+								<f:fields>
+									<Text text="{personne>Lastname}"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="{i18n>personne.Telephone}">
+								<f:fields>
+									<Text text="{personne>Telephone}"/>
+								</f:fields>
+							</f:FormElement>
+							
+							<!-- Ex 6 --> 
+						</f:formElements>
+					</f:FormContainer>
+					<f:FormContainer>
+						<f:formElements>
+
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+            <Table id="tableCompetences" inset="false" items="{competences>/}">
+                <columns>
+                    <Column id="CompetenceId" width="auto">
+                        <Text text="{i18n>competence.CompetenceId}"/>                   
+                    </Column>
+					<Column id="CompetenceCompetences" width="auto">
+                        <Text text="{i18n>competence.Competences}"/>                   
+                    </Column>
+					
+					<!-- Ex 5 -->             
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text id="tId" text="{competences>CompetenceId}" />
+                            <Text id="tText" text="{competences>Text}" />                 
+                        </cells>
+                    </ColumnListItem>
+                </items>               
+            </Table>
+		</content>
+		<footer>
+			<OverflowToolbar id="toolbar" design="Auto" enabled="true" visible="true">
+				<content></content>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>

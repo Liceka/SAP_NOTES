@@ -1,0 +1,27 @@
+<!--namespace sap.m where the majority of our UI assets are located. -->
+<!--sap.ui.core.mvc namespace with alias mvc, where the SAPUI5 views 
+and all other Model-View-Controller (MVC) assets are located -->
+
+
+<mvc:View
+    controllerName="sap.ui.demo.walkthrough.controller.App"
+    xmlns="sap.m" 
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true">
+    <Shell>
+      <App class="myAppDemoWT">
+         <pages>
+            <Page title="{i18n>homePageTitle}">
+            <content>
+<!-- Instead of putting the panel and its content directly into our App view, 
+we will move it to a new separate HelloPanel view. 
+We refer to this using an XMLView tag in the content aggregation of the panel. -->            
+						<mvc:XMLView viewName="sap.ui.demo.walkthrough.view.HelloPanel"/>
+                  <mvc:XMLView viewName="sap.ui.demo.walkthrough.view.InvoiceList"/>
+
+            </content>
+         </Page>
+      </pages>
+   </App>
+   </Shell>
+</mvc:View>

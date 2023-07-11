@@ -1,0 +1,144 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" xmlns:smtab="sap.ui.comp.smarttable"
+	xmlns:tab="sap.ui.table" xmlns:smbar="sap.ui.comp.smartfilterbar" xmlns:card="sap.f.cards"
+	xmlns:viz.data="sap.viz.ui5.data" xmlns:w="sap.ui.integration.widgets" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:sv="sap.ui.comp.smartvariants" xmlns:viz="sap.viz.ui5.controls" xmlns:micro="sap.suite.ui.microchart" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" 
+    controllerName="stms.app.aelion19.annuaire.controller.List">
+    <f:DynamicPage id="PersonneList" preserveHeaderStateOnScroll="true" showFooter="true" class="sapUiNoContentPadding">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<sv:SmartVariantManagement id="__SVM01" persistencyKey="stms.app.hack2build.smartvariant" showShare="true" showExecuteOnSelection="true"
+						entitySet="PersonneSet"/>
+				</f:heading>
+				<f:snappedContent>
+					<Text id="filterStatus"/>
+				</f:snappedContent>
+			</f:DynamicPageTitle>
+		</f:title>
+		<!-- DynamicPage Header -->
+		<f:header>
+			<f:DynamicPageHeader pinnable="false">
+				<f:content>
+					<smbar:SmartFilterBar id="smartFilterBar" entitySet="PersonneSet"
+						persistencyKey="stms.app.aelion19.annuaire.smartfilter" considerSelectionVariants="true"
+						showFilterConfiguration="true" useToolbar="false" assignedFiltersChanged="onAssignedFiltersChanged" smartVariant="__SVM01">
+						<smbar:controlConfiguration>
+							<smbar:ControlConfiguration index="0" key="Firstname" label="{i18n>filter.Firstname}" visibleInAdvancedArea="true" hasTypeAhead="false"/>												
+						</smbar:controlConfiguration>
+                        <smbar:controlConfiguration>
+							<smbar:ControlConfiguration index="1" key="Lastname" label="{i18n>filter.Lastname}" visibleInAdvancedArea="true" hasTypeAhead="false"/>												
+						</smbar:controlConfiguration>
+						<smbar:layoutData>
+							<FlexItemData shrinkFactor="0"/>
+						</smbar:layoutData>
+					</smbar:SmartFilterBar>
+				</f:content>
+			</f:DynamicPageHeader>
+		</f:header>
+		<!-- DynamicPage Content -->
+		<f:content>										
+            <smtab:SmartTable id="smartTable" entitySet="PersonneSet" tableType="ResponsiveTable" smartFilterId="smartFilterBar"
+                placeToolbarInTable="true" useVariantManagement="true" useTablePersonalisation="true" showTablePersonalisation="true"
+                header="{i18n>personne.title}" showRowCount="true"				
+                requestAtLeastFields="Id,Title,Firstname,Lastname,ImageUri,Actif"
+                ignoreFromPersonalisation="" persistencyKey="stms.app.aelion19.annuaire.smarttable" beforeRebindTable="onBeforeRebindTable"
+                class="sapUiResponsiveContentPadding" showFullScreenButton="true" enableAutoBinding="true">
+                <Table mode="MultiSelect" growing="true" growingScrollToLoad="true" growingThreshold="50" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+                    <columns>
+                        <Column id="Id" hAlign="Left" vAlign="Middle" visible="true" width="auto">
+                            <customData>
+                                <core:CustomData key="p13nData"
+                                    value='\{"columnKey": "Id", "type": "string", "columnIndex":"0", "leadingProperty": "Id", "sortProperty": "Id", "filterProperty": "Id"}'/>
+                            </customData>
+                            <Label text="{i18n>personne.Id}" design="Standard" wrapping="true"/>
+                        </Column>
+
+
+                        <!-- <Column id="Title" hAlign="Left" vAlign="Middle" visible="true" width="auto">
+                            <customData>
+                                <core:CustomData key="p13nData"
+                                    value='\{"columnKey": "Title", "type": "string", "columnIndex":"1", "leadingProperty": "Title", "sortProperty": "Title", "filterProperty": "Title"}'/>
+                            </customData>
+                            <Label text="{i18n>personne.Title}" design="Standard" wrapping="true"/>
+                        </Column>   
+                        <Column id="Firstname" hAlign="Left" vAlign="Middle" visible="true" width="auto">
+                            <customData>
+                                <core:CustomData key="p13nData"
+                                    value='\{"columnKey": "Firstname", "type": "string", "columnIndex":"2", "leadingProperty": "Firstname", "sortProperty": "Firstname", "filterProperty": "Firstname"}'/>
+                            </customData>
+                            <Label text="{i18n>personne.Firstname}" design="Standard" wrapping="true"/>
+                        </Column>   												
+                        <Column id="Lastname" hAlign="Left" vAlign="Middle" visible="true" width="auto">
+                            <customData>
+                                <core:CustomData key="p13nData"
+                                    value='\{"columnKey": "Lastname", "type": "string", "columnIndex":"3", "leadingProperty": "Lastname", "sortProperty": "Lastname", "filterProperty": "Lastname"}'/>
+                            </customData>
+                            <Label text="{i18n>personne.Name}" design="Standard" wrapping="true"/>
+                        </Column>  -->
+
+                         <Column id="Title" hAlign="Left" vAlign="Middle" visible="true" width="auto">
+                            <customData>
+                                    <core:CustomData key="p13nData"
+                                    value='\{"columnKey": "Title", "type": "string", "columnIndex":"1", "leadingProperty": "Title", "sortProperty": "Title", "filterProperty": "Title"}'/>
+                                     <core:CustomData key="p13nData"
+                                    value='\{"columnKey": "Firstname", "type": "string", "columnIndex":"2", "leadingProperty": "Firstname", "sortProperty": "Firstname", "filterProperty": "Firstname"}'/>
+                                     <core:CustomData key="p13nData"
+                                    value='\{"columnKey": "Lastname", "type": "string", "columnIndex":"3", "leadingProperty": "Lastname", "sortProperty": "Lastname", "filterProperty": "Lastname"}'/>
+                                    
+                            </customData>                     
+                            <Label text="{i18n>personne.Title}" design="Standard" wrapping="true"/>
+                        </Column>
+
+                        <Column id="Telephone" hAlign="Left" vAlign="Middle" visible="true" width="auto">
+                            <customData>
+                                <core:CustomData key="p13nData"
+                                    value='\{"columnKey": "Telephone", "type": "string", "columnIndex":"2", "leadingProperty": "Telephone", "sortProperty": "Telephone", "filterProperty": "Telephone"}'/>
+                            </customData>
+                            <Label text="{i18n>personne.Telephone}" design="Standard" wrapping="true"/>
+                        </Column>
+                        
+
+
+
+						<!-- Ex 4 -->	                                        
+                    </columns>
+                    <items>
+                        <ColumnListItem vAlign="Middle" type="Navigation" press="navigateToDetail" highlight="{path: 'Actif', formatter: '.formatter.formatItemsListHighlight'}">
+                            <cells>
+                                <ObjectIdentifier title="{Id}" titleActive="false"/>
+                            </cells>
+                            <!-- <cells>
+                                <ObjectIdentifier title="{Title}"/>
+                            </cells>		
+                            <cells>
+                                <ObjectIdentifier title="{Firstname}"/>
+                            </cells>	
+                            <cells>
+                                <ObjectIdentifier title="{Lastname}"/>
+                            </cells> -->
+                             <cells> 
+                             <ObjectIdentifier title="{parts: ['Title','Lastname'], formatter: '.formatter.formatName'}" text="{Firstname}"/> 
+                             </cells>
+                             <cells> 
+                             <ObjectIdentifier title="{Telephone}"/>
+                             </cells>
+
+
+							<!-- Ex 4 -->															
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </smtab:SmartTable>
+		</f:content>
+		<f:footer>
+			<OverflowToolbar id="toolbar" design="Auto" enabled="true" visible="{=${messages>length} > 0 ? true:false}">
+				<content>
+					<Button id="popover" text="{messages>length}" icon="sap-icon://message-popup" type="{=${messages>length} > 0 ? 'Reject':'Default'}"
+						press="onPopoverPress"/>
+					<ToolbarSpacer/>
+				</content>
+			</OverflowToolbar>
+		</f:footer>
+	</f:DynamicPage>        
+</mvc:View>

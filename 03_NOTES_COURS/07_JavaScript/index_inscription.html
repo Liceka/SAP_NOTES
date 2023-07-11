@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Formation</title>
+		<script type="text/javascript">
+
+class Utilisateur
+{
+nom;
+prenom;
+email;
+pseudo;
+mdp;
+connecté = false;
+constructor(email, mdp)
+  {
+      this.email = email;
+      this.mdp = mdp;
+
+  }
+connexion()
+{
+
+  for (let i = 0; i < 3; i++)
+  {
+    const mdp_saisi = prompt ("Veuillez saisire votre mot de passe");
+    
+          if(this.mdp === mdp_saisi)
+            {
+                this.connecté = true;
+                return; //mdp ok, arrête le traitement
+            }
+          else
+            {
+            throw new Error("Le mot de passe est invalide !")
+            }
+  
+  }
+}
+}
+
+// const moi = new Utilisateur("lisa.bagues@blabla.com", "blabla")
+// moi.connexion()
+
+const liste_utilisateur = [];
+
+			function inscription()
+			{
+				let email= prompt("Entrez votre Email:");
+        		let mdp = prompt("Entrez votre mdp:");
+
+				const utlisateur = new Utilisateur(email, mdp);
+				liste_utilisateur.push(utlisateur);
+
+				console.log(liste_utilisateur);
+			}
+
+
+
+		</script>
+	</head>
+	<body>
+		<h1>Bonjour et bienvenue</h1>
+		<div class="class">
+			<button onclick="inscription()">Lancer mon code</button>
+		</div>
+	</body>
+</html>

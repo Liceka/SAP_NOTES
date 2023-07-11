@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Formation</title>
+		<script type="text/javascript">
+			function run()
+			{
+
+// Fonction qui me dit si mon nombre est divisible par 3 ou 7 ou les 2
+function divisible()
+{
+    const nombre = demandeNombre("Veuillez choisir un nombre");
+ 
+    if(nombre % 3 == 0 && nombre % 7 == 0)
+    {
+        console.log("Ce nombre est divisible par 3 et 7 (donc par 21)");
+    }
+    else if(nombre % 3 == 0 || nombre % 7 == 0)
+    {
+        console.log("Ce nombre est divisible par 3 ou 7");
+    }
+    else
+    {
+        console.log("Ce nombre n'est pas divisible par 3 ou 7");
+    }
+}
+
+// Fonction qui me donne le nombre le plus haut du tableau
+function max_tableau(tableau)
+{
+    let max = 0;
+    tableau.forEach(function(element) {
+        /*if(element > max)
+        {
+            max = element;
+        }*/
+        max = Math.max(max, element);
+    });
+ 
+    return max;
+}
+
+// Fonction pour retourner les valeurs absolues du tableau
+
+function abs_tableau(tableau)
+{
+    for(let i = 0; i < tableau.length; i++)
+    {
+        if(tableau[i] < 0)
+        {
+            tableau[i] = -tableau[i];
+        }
+    }
+    return tableau;
+}
+
+// Je voudrais génerer X nombre aléatoire et... 0,5
+
+function aleatoire_petit(quantite)
+{
+    let compteur = 0;
+    for(let i = 0; i < quantite; i++)
+    {
+        const alea = Math.random();
+ 
+        if(alea < 0.5)
+        {
+            compteur++;
+        }
+    }
+ 
+    return compteur;
+}
+
+
+            }
+		</script>
+	</head>
+	<body>
+		<h1>Bonjour et bienvenue</h1>
+		<div class="class">
+			<button onclick="divisible()">Lancer mon code</button>
+		</div>
+	</body>
+</html>

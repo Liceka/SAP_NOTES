@@ -1,0 +1,7 @@
+<core:FragmentDefinition controllerName="stms.app.aelion19.annuaire.controller.BaseController" xmlns="sap.m" xmlns:core="sap.ui.core">
+	<MessagePopover items="{path: 'messages>/Messages'}">
+		<items>
+			<MessageItem type="{messages>type}" title="{messages>title}" description="{messages>description}" subtitle="{messages>subtitle}"/>
+		</items>
+	</MessagePopover>
+</core:FragmentDefinition>

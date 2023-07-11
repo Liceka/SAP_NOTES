@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZFORMATION_ACH_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Personne" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Mandt" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Client" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Title" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Firstname" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="First name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Lastname" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Last name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ImageUri" Type="Edm.String" Nullable="false" MaxLength="250" sap:unicode="false" sap:label="URI" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Actif" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="CompetenceSet" Relationship="ZFORMATION_ACH_SRV.GetCompetence" FromRole="FromRole_GetCompetence" ToRole="ToRole_GetCompetence"/>
+            </EntityType>
+            <EntityType Name="Competence" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PersonneId"/>
+                    <PropertyRef Name="CompetenceId"/>
+                </Key>
+                <Property Name="Mandt" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Client" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PersonneId" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CompetenceId" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Short Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <ComplexType Name="pays">
+                <Property Name="Spras" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Language" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Land1" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Country" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Landx50" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Country" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </ComplexType>
+            <Association Name="GetCompetence" sap:content-version="1">
+                <End Type="ZFORMATION_ACH_SRV.Personne" Multiplicity="1" Role="FromRole_GetCompetence"/>
+                <End Type="ZFORMATION_ACH_SRV.Competence" Multiplicity="*" Role="ToRole_GetCompetence"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_GetCompetence">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_GetCompetence">
+                        <PropertyRef Name="PersonneId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZFORMATION_ACH_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="PersonneSet" EntityType="ZFORMATION_ACH_SRV.Personne" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="CompetenceSet" EntityType="ZFORMATION_ACH_SRV.Competence" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <AssociationSet Name="GetCompetenceSet" Association="ZFORMATION_ACH_SRV.GetCompetence" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="PersonneSet" Role="FromRole_GetCompetence"/>
+                    <End EntitySet="CompetenceSet" Role="ToRole_GetCompetence"/>
+                </AssociationSet>
+                <FunctionImport Name="GetPays" ReturnType="Collection(ZFORMATION_ACH_SRV.pays)" m:HttpMethod="GET"/>
+            </EntityContainer>
+            <atom:link rel="self" href="https://s4.gateway.stms:8988/sap/opu/odata/sap/ZFORMATION_ACH_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://s4.gateway.stms:8988/sap/opu/odata/sap/ZFORMATION_ACH_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

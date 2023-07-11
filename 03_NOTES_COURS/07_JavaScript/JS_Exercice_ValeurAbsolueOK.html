@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Formation</title>
+		<script type="text/javascript">
+			function run()
+			{
+				/////////////////////////////////////
+
+//EXERCICE :  Je souhaites savoir la valeur absolue du nombre que je saisie.
+//La valeur absolue d’un nombre est sa valeur positive.
+
+//Mon code
+const nombre = prompt("Saisir un nombre");
+
+if(nombre>=0)
+{
+    console.log(nombre);
+}
+else
+{
+    console.log(-nombre);
+}
+
+// Code de Fred avec fonction :
+
+let num1 = prompt("Entrez le premier nombre :");
+
+const valeurAbsolue = absoluteValue(num1);
+
+console.log("Valeur absolue : " + valeurAbsolue);
+
+function absoluteValue(num1) {
+        if (num1 < 0) {
+          return -num1;
+        } else {
+          return num1;
+        }
+      }
+
+				/////////////////////////////////////
+			}
+		</script>
+	</head>
+	<body>
+		<h1>Bonjour et bienvenue</h1>
+		<div class="class">
+			<button onclick="run()">Lancer mon code</button>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Trouve_nom</title>
+		<script type="text/javascript">
+			function run()
+			{
+				/////////////////////////////////////
+
+				let nom1 = prompt("Entrez le premier nom:");
+        		let nom2 = prompt("Entrez le deuxième nom :");
+        		let nom3 = prompt("Entrez le troisième nom :");
+        		let nom4 = prompt("Entrez le quatrième nom:");
+
+				
+				//const syll1 = absoluteValue(num1);
+// Affiche "Moz"
+// console.log(nom1.substring(0,3));
+// console.log(nom2.substring(0,3));
+// console.log(nom3.substring(0,3));
+// console.log(nom4.substring(0,3));
+
+				let syl1 = (nom1.substring(0,3));
+        		let syl2 = (nom2.substring(0,3));
+        		let syl3 = (nom3.substring(0,3));
+        		let syl4 = (nom4.substring(0,3));
+
+				// let tableau = [syl1, syl2, syl3, syl4];
+
+				// console.log(tableau);
+	
+				let alea = Math.round(Math.random() * 3); 			 
+
+
+
+				if(alea == 0)
+						{
+							alert("Ton nom de groupe est : "+ syl4 + syl3+ syl2 + syl);
+						}
+					else if (alea == 1)
+						{
+							alert("Ton nom de groupe est : "+ syl2 + syl3+ syl4 + syl1);
+						}
+					else if (alea == 2)
+						{
+							alert("Ton nom de groupe est : "+ syl3 + syl4+ syl1 + syl2);
+						}
+					else if (alea == 3)
+						{
+							alert("Ton nom de groupe est : "+ syl1 + syl4+ syl3+ syl2);
+						}
+				///////////////////////////////////
+			}
+
+			
+		</script>
+	</head>
+	<body>
+		<h1>Vous n'arrivez pas à trouver votre nom de groupe ? </h1>
+		<div class="class">
+			<button onclick="run()">Cliquez ici !</button>
+		</div>
+	</body>
+</html>

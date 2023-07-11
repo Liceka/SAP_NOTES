@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Formation</title>
+		<script type="text/javascript">
+			function run()
+			{
+				/////////////////////////////////////
+
+				const alea = Math.round(Math.random() * 10); 
+				//Le nombre aléatoire est un nombre à virgule entre 0 et 1. 
+				//Pour le passer entre 1 et 10, on le multiplie par 10, 
+				//puis on l’arrondis à l’entier supérieur
+				
+				const nombre = prompt("Choisir un nombre entre 1 et 10");
+
+					if(alea == nombre)
+						{
+							alert("Bravo, vous avez trouvé");
+						}
+					else
+						{
+ 							alert("Perdu, le nombre a trouver etait " + alea);
+						}
+
+				/////////////////////////////////////
+			}
+		</script>
+	</head>
+	<body>
+		<h1>Bonjour et bienvenue</h1>
+		<div class="class">
+			<button onclick="run()">Lancer mon code</button>
+		</div>
+	</body>
+</html>

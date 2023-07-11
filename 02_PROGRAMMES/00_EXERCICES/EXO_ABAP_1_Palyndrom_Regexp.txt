@@ -1,0 +1,19 @@
+ajouter un radio bouton sur le programme :
+o palindrome
+o verif chaine
+
+un seul parameter de saisie de chaine de caractère.
+
+
+Si c'est "palindrom" qui est sélectionné, 
+vériffier que la chaien de caractère rentrée est un palindrom ou non 
+(un palyndrom est un mot qui peut se lire à l'envers , exemple "radar" ou "non")
+
+
+Si c'est "vérif chaîne" qui est sélectionné, 
+vérifier que la chaine de caractères est de ce type : 
+"AIRCRAFT-XXXYY" avec XXX (3 à 5 chiffres quelconques et YY 2 Lettres quelconques)
+
+"AIRCRAFT-123AB" est correct
+"AIRCRAFT-1234AB" est correct
+"AIRCRAFT-12345AB" est correct
